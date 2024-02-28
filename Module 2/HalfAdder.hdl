@@ -1,0 +1,19 @@
+
+/** Computes the sum of two bits. */
+
+CHIP HalfAdder {
+
+    IN a, b;
+    OUT sum,
+        carry;
+
+    PARTS:
+    // Implementation_#1:
+
+    // The "sum" column of the Truth Table happens to be as the Xor gate
+    Xor (a = a, b = b, out = sum);
+
+    // The "carry" column of the Truth Table happens to be as the And gate
+    And (a = a, b = b, out = carry);
+
+}
