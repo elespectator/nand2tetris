@@ -1,0 +1,19 @@
+
+/** Or gate: if ((a == 1) or (b == 1)) out = 1, else out = 0 */
+
+CHIP Or {
+
+    IN a, b;
+    OUT out;
+
+    PARTS:
+    // Implementation_#1:
+
+    // NOT (x)
+    Nand (a = a, b = a, out = Nota);
+    Nand (a = b, b = b, out = Notb);
+
+    // (NOT(x)) NAND (NOT(y))
+    Nand (a = Nota, b = Notb, out = out);
+
+}

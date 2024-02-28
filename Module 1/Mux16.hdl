@@ -1,0 +1,69 @@
+
+/** 16-bit multiplexor: for i = 0, ..., 15: if (sel == 0) out[i] = a[i], else out[i] = b[i] */
+
+CHIP Mux16 {
+
+    IN a[16], b[16], sel;
+    OUT out[16];
+
+    PARTS:
+    // Implementation_#1:
+
+    // NOT (sel)
+    Nand (a = sel, b = sel, out = Notsel);
+
+    // x = (NOT(sel)) NAND A[i]
+    Nand (a = Notsel, b = a[0], out = NotselNanda0);
+    Nand (a = Notsel, b = a[1], out = NotselNanda1);
+    Nand (a = Notsel, b = a[2], out = NotselNanda2);
+    Nand (a = Notsel, b = a[3], out = NotselNanda3);
+    Nand (a = Notsel, b = a[4], out = NotselNanda4);
+    Nand (a = Notsel, b = a[5], out = NotselNanda5);
+    Nand (a = Notsel, b = a[6], out = NotselNanda6);
+    Nand (a = Notsel, b = a[7], out = NotselNanda7);
+    Nand (a = Notsel, b = a[8], out = NotselNanda8);
+    Nand (a = Notsel, b = a[9], out = NotselNanda9);
+    Nand (a = Notsel, b = a[10], out = NotselNanda10);
+    Nand (a = Notsel, b = a[11], out = NotselNanda11);
+    Nand (a = Notsel, b = a[12], out = NotselNanda12);
+    Nand (a = Notsel, b = a[13], out = NotselNanda13);
+    Nand (a = Notsel, b = a[14], out = NotselNanda14);
+    Nand (a = Notsel, b = a[15], out = NotselNanda15);
+
+    // y = sel NAND B[i]
+    Nand (a = sel, b = b[0], out = selNandb0);
+    Nand (a = sel, b = b[1], out = selNandb1);
+    Nand (a = sel, b = b[2], out = selNandb2);
+    Nand (a = sel, b = b[3], out = selNandb3);
+    Nand (a = sel, b = b[4], out = selNandb4);
+    Nand (a = sel, b = b[5], out = selNandb5);
+    Nand (a = sel, b = b[6], out = selNandb6);
+    Nand (a = sel, b = b[7], out = selNandb7);
+    Nand (a = sel, b = b[8], out = selNandb8);
+    Nand (a = sel, b = b[9], out = selNandb9);
+    Nand (a = sel, b = b[10], out = selNandb10);
+    Nand (a = sel, b = b[11], out = selNandb11);
+    Nand (a = sel, b = b[12], out = selNandb12);
+    Nand (a = sel, b = b[13], out = selNandb13);
+    Nand (a = sel, b = b[14], out = selNandb14);
+    Nand (a = sel, b = b[15], out = selNandb15);
+
+    // x NAND y
+    Nand (a = NotselNanda0, b = selNandb0, out = out[0]);
+    Nand (a = NotselNanda1, b = selNandb1, out = out[1]);
+    Nand (a = NotselNanda2, b = selNandb2, out = out[2]);
+    Nand (a = NotselNanda3, b = selNandb3, out = out[3]);
+    Nand (a = NotselNanda4, b = selNandb4, out = out[4]);
+    Nand (a = NotselNanda5, b = selNandb5, out = out[5]);
+    Nand (a = NotselNanda6, b = selNandb6, out = out[6]);
+    Nand (a = NotselNanda7, b = selNandb7, out = out[7]);
+    Nand (a = NotselNanda8, b = selNandb8, out = out[8]);
+    Nand (a = NotselNanda9, b = selNandb9, out = out[9]);
+    Nand (a = NotselNanda10, b = selNandb10, out = out[10]);
+    Nand (a = NotselNanda11, b = selNandb11, out = out[11]);
+    Nand (a = NotselNanda12, b = selNandb12, out = out[12]);
+    Nand (a = NotselNanda13, b = selNandb13, out = out[13]);
+    Nand (a = NotselNanda14, b = selNandb14, out = out[14]);
+    Nand (a = NotselNanda15, b = selNandb15, out = out[15]);
+
+}

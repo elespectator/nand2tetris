@@ -1,0 +1,23 @@
+
+ /** Demultiplexor: [a, b] = [in, 0] if sel == 0 ; [0, in] if sel == 1 */
+
+CHIP DMux {
+
+    IN in, sel;
+    OUT a, b;
+
+    PARTS:
+    // Implementation_#1:
+
+    // NOT (sel)
+    Nand (a = sel, b = sel, out = Notsel);
+
+    // NOT (in NAND (NOT(sel))) = A
+    Nand (a = in, b = Notsel, out = inNandNotsel);
+    Nand (a = inNandNotsel, b = inNandNotsel, out = a);
+
+    // NOT (in NAND sel)
+    Nand (a = in, b = sel, out = inNandsel);
+    Nand (a = inNandsel, b = inNandsel, out = b);
+
+}

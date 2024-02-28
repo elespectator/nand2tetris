@@ -1,0 +1,29 @@
+
+ /** And gate: if ((a == 1) and (b == 1)) out = 1, else out = 0 */
+
+CHIP And {
+
+    IN a, b;
+    OUT out;
+    
+    PARTS:
+    // Implementation_#1:
+
+    // A NAND B , B NAND A
+    Nand (a = a, b = b, out = aNandb);
+    Nand (a = b, b = a, out = bNanda);
+
+    // NOT (x NAND y)
+    Nand (a = aNandb, b = bNanda, out = out);
+
+/**
+    // Implementation_#2:
+
+    // A NAND B
+    Nand (a = a, b = b, out = aNandb);
+
+    // NOT (A NAND B)
+    Nand (a = aNandb, b = aNandb, out = out);
+*/
+
+}

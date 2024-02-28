@@ -1,0 +1,57 @@
+
+/**
+    // 8-way demultiplexor:
+
+    [a, b, c, d, e, f, g, h]  = [in, 0, 0, 0, 0, 0, 0, 0] if sel == 000
+                                [0, in, 0, 0, 0, 0, 0, 0] if sel == 001
+                                ...
+                                [0, 0, 0, 0, 0, 0, 0, in] if sel == 111
+ */
+
+CHIP DMux8Way {
+
+    IN in, sel[3];
+    OUT a, b, c, d, e, f, g, h;
+
+    PARTS:
+    // Implementation_#1:
+
+    // SPLIT 0/in BASED ON sel[2] (Signal WILL BE OUTPUTTED either on A/B/C/D or in E/F/G/H)
+    DMux (in = in, sel = sel[2], a = abcd, b = efgh);
+
+    // SPLIT each of previous OUTPUTS (BASED ON sel[0,1]. One outputs 0's, the other "in (& 0)" where it should)
+    DMux4Way (in = abcd, sel = sel[0..1], a = a, b = b, c = c, d = d);
+    DMux4Way (in = efgh, sel = sel[0..1], a = e, b = f, c = g, d = h);
+
+/**
+    // DMux4Way Implementation_#1:
+
+        IN in, sel[2];
+        OUT a, b, c, d;
+
+        // SPLIT 0/in BASED ON sel[1] (Signal WILL BE OUTPUTTED either on A/B or in C/D)
+        DMux (in = in, sel = sel[1], a = ab, b = cd);
+
+        // SPLIT each of previous OUTPUTS (BASED ON sel[0]. One outputs 0's, the other "in (& 0)" where it should)
+        DMux (in = ab, sel = sel[0], a = a, b = b);
+        DMux (in = cd, sel = sel[0], a = c, b = d);
+*/
+/**
+    // DMux Implementation_#1:
+
+        IN in, sel;
+        OUT a, b;
+
+        // NOT (sel)
+        Nand (a = sel, b = sel, out = Notsel);
+
+        // NOT (in NAND (NOT(sel))) = A
+        Nand (a = in, b = Notsel, out = inNandNotsel);
+        Nand (a = inNandNotsel, b = inNandNotsel, out = a);
+
+        // NOT (in NAND sel)
+        Nand (a = in, b = sel, out = inNandsel);
+        Nand (a = inNandsel, b = inNandsel, out = b);
+*/
+
+}

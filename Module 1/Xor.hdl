@@ -1,0 +1,44 @@
+
+/** Exclusive-or gate: out = (not(a) and b) or (a and not(b)) */
+
+CHIP Xor {
+
+    IN a, b;
+    OUT out;
+
+    PARTS:
+    // Implementation_#1:
+
+    // NOTs
+    Nand (a = a, b = a, out = Nota);
+    Nand (a = b, b = b, out = Notb);
+
+    // x AND (NOT(y))
+
+    // a AND (NOT(b))
+    Nand (a = a, b = Notb, out = aNandNotb);
+    Nand (a = a, b = Notb, out = NotbNanda);
+    Nand (a = aNandNotb, b = NotbNanda, out = aAndNotb);
+
+    // b AND (NOT(a))
+    Nand (a = Nota, b = b, out = NotaNandb);
+    Nand (a = Nota, b = b, out = bNandNota);
+    Nand (a = NotaNandb, b = bNandNota, out = NotaAndb);
+
+    // OR
+
+    Nand (a = aAndNotb, b = aAndNotb, out = NotaAndNotb);
+    Nand (a = NotaAndb, b = NotaAndb, out = NotNotaAndb);
+    Nand (a = NotaAndNotb, b = NotNotaAndb, out = out);
+
+/**
+    // Implementation_#2:
+
+    Not (in = a, out = Nota);
+    Not (in = b, out = Notb);
+    And (a = a, b = Notb, out = aAndNotb);
+    And (a = Nota, b=b, out = NotaAndb);
+    Or (a=aAndNotb, b = NotaAndb, out = out);
+*/
+
+}
