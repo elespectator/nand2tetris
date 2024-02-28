@@ -3,31 +3,9 @@
 Compiled resources from taking the course [Build a Modern Computer from First Principles: From Nand to Tetris](https://www.coursera.org/learn/build-a-computer) by Noam Nisan and Shimon Schocken
 
 ## Modules:
-|                                           |                                                                 |
-|----------------------------                      |----------------------------------------------                                 |
 | _[Module 1](https://github.com/elespectator/nand2tetris/tree/main/Module%201)_ | **[Boolean Logic](https://www.nand2tetris.org/project01)** |
 |----------------------------                      |----------------------------------------------                                 |
 | _[Module 2](https://github.com/elespectator/nand2tetris/tree/main/Module%202)_ | **[Boolean Arithmetic](https://www.nand2tetris.org/project02)** |
-|----------------------------                      |----------------------------------------------                                 |
-|                                           |                                                                 |
-|----------------------------                      |----------------------------------------------                                 |
-|                                           |                                                                 |
-|----------------------------                      |----------------------------------------------                                 |
-|                                           |                                                                 |
-|----------------------------                      |----------------------------------------------                                 |
-|                                           |                                                                 |
-|----------------------------                      |----------------------------------------------                                 |
-|                                           |                                                                 |
-|----------------------------                      |----------------------------------------------                                 |
-|                                           |                                                                 |
-|----------------------------                      |----------------------------------------------                                 |
-|                                           |                                                                 |
-|----------------------------                      |----------------------------------------------                                 |
-|                                           |                                                                 |
-|----------------------------                      |----------------------------------------------                                 |
-|                                           |                                                                 |
-|----------------------------                      |----------------------------------------------                                 |
-|                                           |                                                                 |
 
 
 ## Content
@@ -41,8 +19,8 @@ The code has been structured and commented to try being as visual and explicit a
 
 About the course and authors:
 
-[Promo Video](https://www.youtube.com/watch?v=wTl5wRDT0CU)
+- [Promo Video](https://www.youtube.com/watch?v=wTl5wRDT0CU)
 
-[Shimon Schocken's TED Talk](https://youtu.be/iE7YRHxwoDs?si=zRC5U9Up4qGsm9Tr)
+- [Shimon Schocken's TED Talk](https://youtu.be/iE7YRHxwoDs?si=zRC5U9Up4qGsm9Tr)
 
-[Noam Nisan at ZKPodcast](https://www.youtube.com/watch?v=JS-YRdt8S3U)
+- [Noam Nisan at ZKPodcast](https://www.youtube.com/watch?v=JS-YRdt8S3U)
